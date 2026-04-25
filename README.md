@@ -29,6 +29,7 @@ This project is a comprehensive **Player Performance Analytics Dashboard** built
 - [Data Transformation](#-data-transformation)
 - [Data Modelling](#-data-modelling)
 - [DAX Measures](#-dax-measures)
+- [Player Selection Criteria](#-player-selection-criteria)
 - [Dashboard Screenshots](#-dashboard-screenshots)
 - [Tools & Technologies](#-tools--technologies)
 
@@ -172,6 +173,98 @@ Display Text = IF([Player Selection] = "1", " ", "Select Player(s) by clicking t
 
 Color Callout Value = IF([Player Selection] = "0", "#E8D166", "#1D1D2E")
 ```
+
+---
+
+## 🎯 Player Selection Criteria
+
+One of the most powerful features of this dashboard is the ability to **build your own Final 11** using data-driven criteria. Each player role has a clearly defined set of **parameters and minimum thresholds** that a player must meet to be considered for that position.
+
+> The criteria were defined as part of the **problem statement** and are used to filter and rank players across all 5 roles.
+
+---
+
+### 💥 Openers / Power Hitters
+
+Openers need to score quickly right from ball one — they're evaluated on **high strike rate, good average, and boundary dominance**.
+
+![Openers Criteria](openers_criteria.png)
+
+| Parameter | Description | Criteria |
+|-----------|-------------|----------|
+| Batting Average | Average runs scored in an innings | **> 30** |
+| Strike Rate | No. of runs scored per 100 balls | **> 140** |
+| Innings Batted | Total innings batted | **> 3** |
+| Boundary % | % of runs scored in boundaries | **> 50** |
+| Batting Position | Order in which the batter played | **< 4** |
+
+---
+
+### ⚓ Anchors / Middle Order
+
+Anchors are the backbone of the batting lineup — they need **consistency and the ability to stay at the crease** while building partnerships.
+
+![Anchors Criteria](anchors_criteria.png)
+
+| Parameter | Description | Criteria |
+|-----------|-------------|----------|
+| Batting Average | Average runs scored in an innings | **> 40** |
+| Strike Rate | No. of runs scored per 100 balls | **> 125** |
+| Innings Batted | Total innings batted | **> 3** |
+| Avg. Balls Faced | Average balls faced by the batter in an innings | **> 20** |
+| Batting Position | Order in which the batter played | **> 2** |
+
+---
+
+### 🏁 Finishers / Lower Order Anchors
+
+Finishers must be able to **accelerate at the death** and have the ability to contribute with the ball too.
+
+![Finishers Criteria](finishers_criteria.png)
+
+| Parameter | Description | Criteria |
+|-----------|-------------|----------|
+| Batting Average | Average runs scored in an innings | **> 25** |
+| Strike Rate | No. of runs scored per 100 balls | **> 130** |
+| Innings Batted | Total innings batted | **> 3** |
+| Avg. Balls Faced | Average balls faced by the batter in an innings | **> 12** |
+| Batting Position | Order in which the batter played | **> 4** |
+| Innings Bowled | Total innings bowled by the bowler | **> 1** |
+
+---
+
+### 🔄 All-Rounders / Lower Middle Order
+
+All-Rounders must contribute **both with bat and ball** — they're evaluated on a combined batting and bowling threshold.
+
+![All-Rounders Criteria](all-rounders_criteria.png)
+
+| Parameter | Description | Criteria |
+|-----------|-------------|----------|
+| Batting Average | Average runs scored in an innings | **> 15** |
+| Strike Rate | No. of runs scored per 100 balls | **> 140** |
+| Innings Batted | Total innings batted | **> 2** |
+| Batting Position | Order in which the batter played | **> 4** |
+| Innings Bowled | Total innings bowled | **> 2** |
+| Bowling Economy | Average runs allowed per over | **< 7** |
+| Bowling Strike Rate | Average no. of balls required to take a wicket | **< 20** |
+
+---
+
+### 🎳 Specialist Fast Bowlers / Tail End
+
+Specialist fast bowlers are selected **purely on bowling performance** — economy, wicket-taking ability, and dot ball pressure are the key metrics.
+
+![Specialist Fast Bowlers Criteria](specialist-fast-bowlers_criteria.png)
+
+| Parameter | Description | Criteria |
+|-----------|-------------|----------|
+| Innings Bowled | Total innings bowled | **> 4** |
+| Bowling Economy | Average runs allowed per over | **< 7** |
+| Bowling Strike Rate | Average no. of balls required to take a wicket | **< 16** |
+| Bowling Style | Bowling style of the player | **= "%Fast%"** |
+| Bowling Average | No. of runs allowed per wicket | **< 20** |
+| Dot Ball % | % of dot balls bowled | **> 40** |
 
 ---
 
